@@ -93,9 +93,3 @@
     files: '\.go$'
     language: 'script'
     description: "Runs `go mod vendor`, requires golang"
--   id: go-name-convention
-    name: 'go-name-convention'
-    entry: run-go-name-convention.sh
-    files: '\.go$'
-    language: 'script'
-    description: "Runs `go-name-convention`, requires golang"
