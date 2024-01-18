@@ -16,12 +16,12 @@
     files: '\.go$'
     language: 'script'
     description: "Runs `go vet`, requires golang"
--   id: go-lint
-    name: 'go lint'
-    entry: run-go-lint.sh
-    files: '\.go$'
-    language: 'script'
-    description: "Runs `golint`, requires https://github.com/golang/lint"
+# -   id: go-lint
+#     name: 'go lint'
+#     entry: run-go-lint.sh
+#     files: '\.go$'
+#     language: 'script'
+#     description: "Runs `golint`, requires https://github.com/golang/lint"
 -   id: go-cyclo
     name: 'go-cyclo'
     entry: run-go-cyclo.sh
@@ -93,3 +93,9 @@
     files: '\.go$'
     language: 'script'
     description: "Runs `go mod vendor`, requires golang"
+-   id: go-name-convention
+    name: 'go-name-convention'
+    entry: run-go-name-convention.sh
+    files: '\.go$'
+    language: 'script'
+    description: "Runs `go-name-convention`, requires golang"
