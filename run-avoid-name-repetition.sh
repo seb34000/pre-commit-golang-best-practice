@@ -22,19 +22,19 @@ suggest_name() {
     local package_name=$2
     local receiver_name=$3
 
-    # DEBUG
-    echo "Current name: $current_name"
-    echo "Package name: $package_name"
-    echo "Receiver name: $receiver_name"
+    # Convert names to lowercase for comparison
+    local lower_current_name=$(echo "$current_name" | tr '[:upper:]' '[:lower:]')
+    local lower_package_name=$(echo "$package_name" | tr '[:upper:]' '[:lower:]')
+    local lower_receiver_name=$(echo "$receiver_name" | tr '[:upper:]' '[:lower:]')
 
     # Remove package name from function names
-    if [[ "$current_name" == "$package_name"* ]]; then
+    if [[ "$lower_current_name" == *"$lower_package_name"* ]]; then
         echo "${current_name/$package_name/}"
         return
     fi
 
     # Remove receiver name from method names
-    if [[ -n "$receiver_name" && "$current_name" == "$receiver_name"* ]]; then
+    if [[ -n "$receiver_name" && "$lower_current_name" == *"$lower_receiver_name"* ]]; then
         echo "${current_name/$receiver_name/}"
         return
     fi
@@ -62,7 +62,7 @@ for file in "$@"; do
             new_name=$(suggest_name "$current_name" "$package_name" "$receiver_name")
 
             if [[ "$current_name" != "$new_name" ]]; then
-                echo "Suggestion: Rename $current_name to $new_name"
+                echo "Suggestion: Rename $current_name to $new_name in $file"
             fi
         fi
     done <<< "$declarations"
