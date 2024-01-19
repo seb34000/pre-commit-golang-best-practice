@@ -22,6 +22,11 @@ suggest_name() {
     local package_name=$2
     local receiver_name=$3
 
+    # DEBUG
+    echo "Current name: $current_name"
+    echo "Package name: $package_name"
+    echo "Receiver name: $receiver_name"
+
     # Remove package name from function names
     if [[ "$current_name" == "$package_name"* ]]; then
         echo "${current_name/$package_name/}"
